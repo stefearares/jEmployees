@@ -236,6 +236,7 @@ public class GUI  extends JFrame {
                         optiuni_functie.setSelectedItem("Analist");
                         optiuni_nationalitate.setSelectedItem("Roman");
                         optiuni_stare_civila.setSelectedItem("Necasatorit");
+                        eroare_cnp.showMessageDialog(eroare_adaugare,"Successfully added!");
                         model_lista.removeAllElements();
                         employeeList=Functions.ListaBD();
                         int j=0;
@@ -281,6 +282,8 @@ public class GUI  extends JFrame {
                     String marcax = temp[2];
                     StergereBD(marcax);
                     model_lista.removeElement(selectedValue);
+                    eroare_cnp.showMessageDialog(eroare_adaugare,"Successfully deleted!");
+
                 } else {
                     eroare_cnp.showMessageDialog(eroare_adaugare,"An employee must be chosen from the list!");
 
@@ -373,6 +376,7 @@ public class GUI  extends JFrame {
                             model_lista.add(j,temp);
                             j++;
                         }
+
 
                     }
                     catch (MyException x)
