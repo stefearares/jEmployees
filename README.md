@@ -1,5 +1,5 @@
 # jEmployees
-### Rareș-Bogdan Ștefea
+
 
 ## Motivație
 
