@@ -1,9 +1,6 @@
 package employeepack;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -183,6 +180,30 @@ public class Functions {
             pstmt.execute();
         } catch (SQLException x) {
             x.printStackTrace();
+        }
+    }
+    public static void createTable(){
+        String sql = "CREATE TABLE IF NOT EXISTS " + "people"
+                +"  (nume varchar(200) NOT NULL,"
+                +"  prenume varchar(200) NOT NULL,"
+                +"  cnp varchar(200) NOT NULL PRIMARY KEY,"
+                +"  loc_nastere varchar(200) NOT NULL,"
+                +"  stare_civila varchar(200) NOT NULL,"
+                +"  nationalitate varchar(200) NOT NULL,"
+                +"  departament varchar(200) NOT NULL,"
+                +"  functie varchar(200) NOT NULL,"
+                +"  numar_telefon varchar(200) NOT NULL,"
+                +"  adresa varchar(200) NOT NULL,"
+                +"  email varchar(200) NOT NULL,"
+                +"  marca varchar(255) NOT NULL,"
+                +"  salariu int(20) NOT NULL)";
+        try{
+        Connection conn=getConnection();
+        Statement stmt = conn.createStatement();
+        stmt.execute(sql);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
         }
     }
 }
