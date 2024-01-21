@@ -1,5 +1,6 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/_FtrmUqL)
 # jEmployees
-
+### Rareș-Bogdan Ștefea
 
 ## Motivație
 
@@ -40,14 +41,12 @@ De asemenea, aplicația permite căutarea angajaților în funcție de: CNP, num
 
 ## Obiective
 
-* Utilizarea, familiarizarea și integrarea conceptelor de **OOP**(object oriented programming) într-un proiect informatic realizat în limbajul **Java**.
 * Utilizarea și crearea **bazelor de date** cu scopul integrării acestora într-un proiect informatic realizat în limbajul **Java**.
   - Modificarea bazelor de date pentru a asigura **longetivitatea acestora**.
-   - Crearea metodelor pentru asigurarea interogărilor **eficiente** in bazele de date.
+  - Crearea metodelor pentru asigurarea interogărilor **eficiente** in bazele de date.
 * Realizarea unei interfețe grafice intuitive pentru utilizatori.
-* Crearea unei aplicații eficiente pentru crearea și căutarea obiectelor la un volum de date mare.
-* Realizarea unuei aplicații cu scopul comercializării.
-* Familiarizarea cu limbajul **Java** pentru utilizarea acestuia în cadrul unui proiect informatic.
+* Crearea unei aplicații eficiente pentru crearea și căutarea agajaților.
+* Crearea unei aplicații cu posibilitatea validării automate a datelor introduse.
 
 ## Arhitectura
 
@@ -55,11 +54,11 @@ De asemenea, aplicația permite căutarea angajaților în funcție de: CNP, num
 
 ![Exemplu de procese pentru arhitectura microserviciilor](documentatie-ghid-utlizare-raport/Vizualizarea_proceselor.png)
 
-![Diagrama claselor exemplu](documentatie-ghid-utlizare-raport/diagrame_clase2.png)
+![Diagrama claselor exemplu](documentatie-ghid-utlizare-raport/clase3.png)
 
 &nbsp;**Prima imagine** reprezintă o diagramă care explică arhitectura proiectului bazată pe microservicii unde se evidențiază cele mai importante servicii fiind adăugare, căutare și ștergere precum și modul de functionare a acestora.
 
-&nbsp;**A doua imagine** prezintă un exemplu de diagramă a claselor în care funcția de CEO și cea de Manageri moștenește atributele și funcțiile clasei de baza Employee.
+&nbsp;**A doua imagine** reprezinta structura claselor utilizate.
 
 ## Baze de date
 
@@ -73,6 +72,11 @@ De asemenea, aplicația permite căutarea angajaților în funcție de: CNP, num
   <li><b>Actualizare</b>: utilizatorul poate actualiza cu ușurință datele unui angajat precum: departamentul, numărul de telefon și adresa.</li>
   <li><b>Adăugare</b>: utilizatorul poate adăuga noi angajați în baza de date cu mecanisme de protecție împtriva duplicatelor precum: verificare în funcție de CNP-ul unic.</li>
   <li><b>Ștergere</b>: utilizatorul poate șterge angajați din baza de date cu ușurință și în siguranță datorita mecanismului de protecție ce necesită confirmarea acțiunii.</li>
+  <li><b>Filtrare</b>: utilizatorul poate filtra lista angajaților din baza de date cu ușurință prin intermediul interfetei grafice și a butonului de căutare care filtrează lista în funcție de nume, prenume, stare civila, naționaltățe, departament și funcție.</li>
+  <li><b>Listare</b>: utilizatorul poate vizualiza lista de angajați.</li>
+  <li><b>Sortare</b>: utilizatorul poate sorta lista angajaților în ordine alfabetică sau în ordinea mărcilor.</li>
+
+
 </ul>
 
 ## Exemple de utilizare
@@ -80,5 +84,3 @@ De asemenea, aplicația permite căutarea angajaților în funcție de: CNP, num
 &nbsp;Un exemplu de utilizare ar fi într-o companie care are aplicația implementată in sistemul lor. Operatorul care utilizează aplicația vrea să afle numărul de angajat al lui Ion Popescu dar nu îi cunoaște decât numele. Operatorul va folosi funcția de căutare pentru a interoga baza de date iar dacă acest Ion Popescu nu este prezent în baza de date va utiliza funcția de adăugare a acestuia în baza de date a companiei. Aplicația este gândită pentru a putea fi utilizată în orice fel de companii, indiferent de numărul de angajați.
 
 &nbsp;Un alt exemplu ar fi o mică firma care dorește să aiba informațiile legate de angajații lor la îndemnă pentru controale sau diferite situații (precum plecarea și venirea frecventă a noilor angajați), fără a pierde bani și timp pentru menținerea informațiilor pe hârtie și depozitarea acestora în locuri special amenajate pentru depozitarea informațiilor. Proprietarul poate să facă modificări în baza de date de la propriul calculator.
-
-<sub><sup>Notice: numele bazei de date este `jemployees` , crearea tabelului se face in mod automat de program.</sup></sub>
