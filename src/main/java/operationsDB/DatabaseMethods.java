@@ -247,4 +247,37 @@ public class DatabaseMethods {
             e.printStackTrace();
         }
     }
+
+     /**
+     * Metoda pentru a lista toți angajații din baza de date in ordine crescatoare sau descrescatoare după atributul "marca".
+     * @param ascending true pentru sortare crescatoare, false pentru sortare descrescatoare.
+     * @return o lista cu angajații sortati după "marca".
+     */
+    public static List<Employee> ListaBDSortByMarca(boolean ascending) {
+        List<Employee> lista = new ArrayList<>();
+
+        try {
+            Connection connection = getConnection();
+            String orderDirection = ascending ? "ASC" : "DESC";
+            String query = "SELECT * FROM people ORDER BY CAST(marca AS UNSIGNED) " + orderDirection;
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            while (resultSet.next()) {
+                try {
+                    Employee temporar = new Employee(resultSet.getString("prenume"), resultSet.getString("nume"), resultSet.getString("cnp"), resultSet.getString("loc_nastere"),
+                            resultSet.getString("stare_civila"), resultSet.getString("nationalitate"), resultSet.getString("departament"), resultSet.getInt("salariu"), resultSet.getString("marca"), resultSet.getString("functie"), resultSet.getString("numar_telefon"),
+                            resultSet.getString("adresa"), resultSet.getString("email"));
+                    lista.add(temporar);
+                } catch (MyException z) {
+                    z.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
 }
