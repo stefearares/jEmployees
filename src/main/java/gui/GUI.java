@@ -12,8 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
-import static operationsDB.DatabaseMethods.CautareBD;
-import static operationsDB.DatabaseMethods.StergereBD;
+import static operationsDB.DatabaseMethods.*;
 
 
 public class GUI  extends JFrame {
@@ -55,6 +54,10 @@ public class GUI  extends JFrame {
     private JList<String> lista_useri;
     private List<Employee> employeeList;
     private List<Employee> lista;
+    private JRadioButton ascendingRadio;
+    private JRadioButton descendingRadio;
+    private ButtonGroup filterGroup;
+    private JButton filterButton;
 
     public GUI(){
         this.setTitle("jEmployees");
@@ -147,12 +150,25 @@ public class GUI  extends JFrame {
             model_lista.add(j,temp);
             j++;
         }
+        ascendingRadio = new JRadioButton("Ascending");
+        descendingRadio = new JRadioButton("Descending");
+        filterGroup = new ButtonGroup();
+        filterGroup.add(ascendingRadio);
+        filterGroup.add(descendingRadio);
 
+        filterButton = new JButton("Filter");
+        filterButton.setBackground(Color.BLUE);
+        filterButton.setForeground(Color.WHITE);
+        filterButton.setOpaque(true);
+
+        JPanel filterPanel = new JPanel();
+        filterPanel.add(ascendingRadio);
+        filterPanel.add(descendingRadio);
+        filterPanel.add(filterButton);
 
         JPanel panou_useri=new JPanel(new GridLayout(0, 1, 0, 0));
         //panou_useri.setPreferredSize(new Dimension(50,250));
         panou_useri.add(lista_useri);
-
 
         JPanel panou_date = new JPanel(new GridLayout(0, 1, 0, 0));
         panou_date.add(eticheta_prenume);
@@ -195,14 +211,19 @@ public class GUI  extends JFrame {
         panou_cautare.add(text_cautare);
         panou_cautare.add(cautare);
 
+        JPanel northPanel = new JPanel(new BorderLayout());
+        northPanel.add(panou_cautare, BorderLayout.NORTH);
+        northPanel.add(filterPanel, BorderLayout.SOUTH);
         JPanel panou_gol = new JPanel();
+
         panou_gol.setPreferredSize(new Dimension(10, 10));
 
         this.add(panou_date,BorderLayout.CENTER);
-        this.add(panou_cautare,BorderLayout.NORTH);
+        //this.add(panou_cautare,BorderLayout.NORTH);
         this.add(panou_useri,BorderLayout.EAST);
         this.add(panou_set,BorderLayout.SOUTH);
         this.add(panou_gol,BorderLayout.WEST);
+        this.add(northPanel, BorderLayout.NORTH);
 
         ActionListener adaugare_bd=new ActionListener() {
             @Override
@@ -439,6 +460,20 @@ public class GUI  extends JFrame {
             }
         };
 
+        filterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean ascending = ascendingRadio.isSelected();
+                List<Employee> sortedList = ListaBDSortByMarca(ascending);
+
+                model_lista.removeAllElements();
+
+                for (Employee employee : sortedList) {
+                    String temp = employee.getPrenume() + " " + employee.getNume() + " " + employee.getMarca();
+                    model_lista.addElement(temp);
+                }
+            }
+        });
 
         stergere.addActionListener(stergere_bd);
         adaugare.addActionListener(adaugare_bd);
